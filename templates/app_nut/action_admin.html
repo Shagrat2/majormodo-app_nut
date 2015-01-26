@@ -1,0 +1,59 @@
+<div class="float-right">
+	<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#about">About&nbsp;&nbsp;<span class="glyphicon glyphicon-info-sign icon-white"></span>
+	</button>
+</div>
+
+<div>
+Network UPS Tools</a> 
+</div>
+
+<div class="row">
+  <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><#LANG_SETUP#><span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+	<li><a href="?view_mode=edit"><#LANG_ADD#></a></li>    
+    <li class="divider"></li>
+    <li><a href="?view_mode=help"><#LANG_HELP#></a></li>
+  </ul>
+</div>
+
+<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="about1" aria-hidden="true">
+<!-- <div id="about" class="modal hide"> -->
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">Network UPS Tools. [#VER#]</h4>
+			</div>
+			<div class="modal-body">
+				<p>Network UPS Tools.<br>
+				<a href="#" target="_blank">Forum</a>.<br>				
+				</p>
+				<p class="float-left"></p>
+			</div>
+			
+			<div class="modal-footer">
+				<div class="pull-left">Best regards!<br>@S :)</div>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+ <!-- table view --> 
+ [#if VIEW_MODE="" || VIEW_MODE="list"#]
+   [#inc view.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table view --> 
+ <!-- table edit -->
+ [#if VIEW_MODE="edit"#]
+   [#inc edit.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table edit -->
+ <!-- table edit -->
+ [#if VIEW_MODE="propertyes"#]
+   [#inc propertyes.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table edit -->
+ 
