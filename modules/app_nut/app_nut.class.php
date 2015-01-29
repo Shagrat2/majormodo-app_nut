@@ -262,7 +262,7 @@ function checkUPS() {
 	  }
 	  
 	  $ups['CHECK_LATEST']=date('Y-m-d H:i:s');
-      $ups['CHECK_NEXT']=date('Y-m-d H:i:s', time()+$online_interval);
+      $ups['CHECK_NEXT']=date('Y-m-d H:i:s', time()+$interval);
 	  SQLUpdate('app_nut_devices', $ups); 
 	  
 	  if ($change){		

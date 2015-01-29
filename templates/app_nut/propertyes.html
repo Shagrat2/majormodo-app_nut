@@ -5,6 +5,10 @@
 <p align=center>
  <a href="?">&lt;&lt;&lt; <#LANG_BACK#></a>
 </p>
+<p>
+<#LANG_LAST_CHECKED#>: [#CHECK_LATEST#]<br/>
+<#LANG_CHECK_NEXT#>: [#CHECK_NEXT#]
+</p>
 <form action="?" method="post" enctype="multipart/form-data" name="frmEdit">
 <table border=0 align=center cellpadding=3>
 [#if OK#]
@@ -35,8 +39,7 @@
  }
 </script>
 
-<tr>
- <td valign="top" align="right"><b><#LANG_PROPERTIES#>:</b></td>
+<tr> 
  <td valign="top">
   <table width="100%" border="1" cellpadding="2">
    <tr>
@@ -60,9 +63,8 @@
 </tr>
 [#endif PROPERTIES#]
 
-<tr>
- <td valign="top">&nbsp;</td>
- <td> 
+<tr> 
+ <td align=center> 
  <input type="submit" name="subm" value="<#LANG_SUBMIT#>"> 
  &nbsp;
  <a href="?"><#LANG_CANCEL#></a>
@@ -74,4 +76,10 @@
 <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
 <input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
 <input type="hidden" name="mode" value="update">
-</form> 
+</form>
+
+<br/>
+<br/>
+<p><b>Поддерживаемые комманды:</b><br/>
+<#CMDS_NOTE#>
+</p>

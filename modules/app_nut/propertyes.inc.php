@@ -69,6 +69,7 @@
    $out['PROPERTIES']=$properties;
   }
 
-  $out['SCRIPTS']=SQLSelect("SELECT ID, TITLE FROM scripts ORDER BY TITLE");
- 
+  $out['CMDS_NOTE'] = str_replace("\n", "<br/>\n", $rec['CMDNOTE']);
+  
+  $out['SCRIPTS']=SQLSelect("SELECT ID, TITLE FROM scripts ORDER BY TITLE"); 
 ?>
