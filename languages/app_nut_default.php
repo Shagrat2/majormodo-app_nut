@@ -9,7 +9,8 @@ $dictionary=array(
 /* general */
 'HELP'=>'Help',
 'NAMEOFUPS'=>'UPS name. Like ',
-'NEED_FOR_CONTROL'=>'Need only for control. Default not need.'
+'NEED_FOR_CONTROL'=>'Need only for control. Default not need.',
+'SUPPORTED_COMMANDS'=>'Supported commands'
 
 /* end module names */
 

@@ -9,7 +9,8 @@ $dictionary=array(
 /* general */
 'HELP'=>'Помощь',
 'NAMEOFUPS'=>'Имя UPS. Как в ',
-'NEED_FOR_CONTROL'=>'Нужен только для упраления. По умолчанию не нужен'
+'NEED_FOR_CONTROL'=>'Нужен только для упраления. По умолчанию не нужен',
+'SUPPORTED_COMMANDS'=>'Поддерживаемые команды'
 
 /* end module names */
 
