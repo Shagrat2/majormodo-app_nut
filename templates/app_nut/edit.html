@@ -1,17 +1,6 @@
-<ul class="breadcrumb">
-<li> 
-<a href="?"><#LANG_HOME#></a>
-</li>
-<span class="divider">/</span>
-<li class="active">
-[#if ID=""#]
-<#LANG_NEW_RECORD#>
-[#else#]
-<#LANG_EDIT_RECORD#>
-[#endif#]
-</li>
-</ul>
-
+<a href="?subm=" class="btn btn-default" title="<#LANG_BACK#>"> <#LANG_BACK#> </a>
+</div>
+<br/>
 <form action="?" method="post" enctype="multipart/form-data" name="frmEdit" id="frmEdit" class="form-horizontal">
 [#if OK#]
     <div class="alert alert-success"><#LANG_DATA_SAVED#></div>

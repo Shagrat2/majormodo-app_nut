@@ -40,20 +40,20 @@ Network UPS Tools</a>
 	</div>
 </div>
 
-<br>
- <!-- table view --> 
+ 
  [#if VIEW_MODE="" || VIEW_MODE="list"#]
    [#inc view.html#]
  [#endif VIEW_MODE#]
- <!-- / table view --> 
- <!-- table edit -->
+ 
  [#if VIEW_MODE="edit"#]
    [#inc edit.html#]
  [#endif VIEW_MODE#]
- <!-- / table edit -->
- <!-- table edit -->
+ 
  [#if VIEW_MODE="propertyes"#]
    [#inc propertyes.html#]
  [#endif VIEW_MODE#]
- <!-- / table edit -->
+ 
+ [#if VIEW_MODE="help"#]
+	[#inc help.html#]
+ [#endif VIEW_MODE#]
  

@@ -1,0 +1,35 @@
+<a href="?subm=" class="btn btn-default" title="<#LANG_BACK#>"> <#LANG_BACK#> </a>
+</div>
+
+<h4 class="text-center"><#LANG_HELP#></h4>
+<p style="text-decoration: underline;"><#LANG_USE_IN_SCRIPT#></p>
+<p>
+include_once(DIR_MODULES.'app_nut/app_nut.class.php');<br>
+$nut=new app_nut();
+</p>
+<p><b>$nut->control($name, $cmd, $vname, $val);</b> -  <#LANG_NUT_CONTROL#></p>
+<br/>
+<table width="100%" border="1" cellpadding="2">
+<tr><td>$nut->control($name, 'upsdesk');</td><td>Used to provide human-readable descriptions</td></tr>
+<tr><td>$nut->control($name, 'getvar', $varname);</td><td>Variable value</td></tr>
+<tr><td>$nut->control($name, 'vartype', $varname);</td><td>Variable type (RW, ENUM, STRING, RANGE)</td></tr>
+<tr><td>$nut->control($name, 'vardesc', $varname);</td><td>Variable descriptions</td></tr>
+<tr><td>$nut->control($name, 'varenum', $varname);</td><td>Variable enumeration</td></tr>
+<tr><td>$nut->control($name, 'varrange', $varname);</td><td> Variable range</td></tr>
+<tr><td>$nut->control($name, 'cmddesc', $cmdname);</td><td>Command descriptions</td></tr>
+<tr><td>$nut->control($name, 'listups');</td><td>UPS list</td></tr>
+<tr><td>$nut->control($name, 'listvar');</td><td>Variable list</td></tr>
+<tr><td>$nut->control($name, 'listrw');</td><td>RW list</td></tr>
+<tr><td>$nut->control($name, 'listcmd');</td><td>Commands list</td></tr>
+<tr><td>$nut->control($name, 'instcmd', $cmdname);</td><td>Do command</td></tr>
+<tr><td>$nut->control($name, 'setvar', $varname, $val);</td><td>Do Variable set value</td></tr>
+<tr><td>$nut->control($name, 'master');</td><td>This requires "upsmon master" in upsd.users</td></tr>
+<tr><td>$nut->control($name, 'fsd');</td><td>FSD</td></tr></tr>
+<tr><td>$nut->control($name, 'ver');</td><td>Get version</td></tr>
+<tr><td>$nut->control($name, 'netver');</td><td>Net version</td></tr>
+</table>
+<a href="http://www.networkupstools.org/docs/developer-guide.chunked/ar01s09.html"><#LANG_MORE_INFO#></a>
+<br/>
+<br/>
+<#LANG_EXAMPLE#>: <#LANG_NUT_QUICK_BATTERY_TEST#><br/>
+<code>$nut->control('myups', 'instcmd', 'test.battery.start.quick');</code> 

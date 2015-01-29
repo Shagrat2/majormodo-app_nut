@@ -6,6 +6,8 @@
 * @package project
 * @author Ivan Z. <ivan@jad.ru>
 * @copyright http://www.smartliving.ru/ (c)
+* Ver: 0.2
+*
 */
 
 include_once("nut.class.php");
@@ -213,7 +215,7 @@ function propertyes(&$out, $id){
 */
 function checkUPS() { 
   
-  // ping hosts
+  // Get checked ups
   $upslist=SQLSelect("SELECT * FROM app_nut_devices WHERE CHECK_NEXT<=NOW()");
      
   $total=count($upslist);
@@ -227,7 +229,7 @@ function checkUPS() {
     $ups['CHECK_NEXT']=date('Y-m-d H:i:s', time()+$interval);
     SQLUpdate('app_nut_devices', $ups); 
 	
-    // checking
+    // Create
 	$nut = new nut_client($ups['UPS'], $ups['HOST'], $ups['PORT']);
 	
 	// Connect
@@ -300,6 +302,91 @@ function checkUPS() {
 	
 	$nut = NULL;
   }  
+}
+
+/**
+* Control
+*
+* Module installation routine
+*
+* @access private
+*/
+function control($alias, $cmd, $name = NULL, $val = NULL){
+  $ups=SQLSelectOne("SELECT * FROM app_nut_devices WHERE UPS='$alias'");
+ 
+  if ($ups['ID']) {
+	  // Create
+	$nut = new nut_client($ups['UPS'], $ups['HOST'], $ups['PORT']);
+	
+	// Connect
+	if ($nut->connect()){
+	  // Login
+	  if ($ups['USERNAME']) {
+		  if (!$nut->login($ups['USERNAME'], $ups['PASSWORD'])){
+			  DebMes("Error in nut connection: Error login"); 
+		  }
+	  }
+	  
+	  switch ($cmd){		
+		case 'upsdesc':
+		  $res = $nut->upsdesc();
+		  return $res;
+		case 'getvar':
+		  $res = $nut->getvar($name);
+		  return $res;
+		case 'vartype':
+		  $res = $nut->vartype($name);
+		  return $res;
+		case 'vardesc':
+		  $res = $nut->vardesc($name);
+		  return $res;		  
+		case 'varenum':
+		  $res = $nut->varenum($name);
+		  return $res;		  
+		case 'varrange':
+		  $res = $nut->varrange($name);
+		  return $res;		  		  
+		case 'cmddesc':
+		  $res = $nut->cmddesc($name);
+		  return $res;
+		case 'listups':
+		  $res = $nut->listups();
+		  return $res;
+		case 'listvar':
+		  $res = $nut->listvar();
+		  return $res;
+		case 'listrw':
+		  $res = $nut->listrw();
+		  return $res;
+		case 'listcmd':
+		  $res = $nut->listcmd();
+		  return $res;
+		case 'instcmd':
+		  $res = $nut->instcmd($name);
+		  return $res;
+		case 'setvar':
+		  $res = $nut->setvar($name, $val);
+		  return $res;
+		case 'master':
+		  $res = $nut->master();
+		  return $res;
+		case 'fsd':
+		  $res = $nut->fsd();
+		  return $res;
+		case 'starttls':
+		  $res = $nut->starttls();
+		  return $res;
+		case 'ver':
+		  $res = $nut->ver();
+		  return $res;
+		case 'netver':
+		  $res = $nut->netver();
+		  return $res;
+	  }
+	}
+	
+	$nut = NULL;
+  }
 }
 
 /**

@@ -1,16 +1,21 @@
 <?php
 
 /**
- * Network UPS tools client class
- *
- * @author Ivan Z <ivan@jad.ru>
- * @copyright Ivan Z
- * 22.01.2015
- *
- **/
+*
+* Network UPS tools client class
+*
+* @author Ivan Z <ivan@jad.ru>
+* @copyright Ivan Z
+* Start: 		22.01.2015	
+* LastChange:	29.01.2015
+* Ver 2
+*
+* API - http://www.networkupstools.org/docs/developer-guide.chunked/ar01s09.html
+*
+**/
  
 class nut_client {
-	private $socket;
+	private $socket = NULL;
 	
 	public $upsname;
 	public $host;
@@ -23,6 +28,10 @@ class nut_client {
 		$this->upsname = $upsname;
 		$this->host = $host;
         $this->port = $port;                
+	}
+	
+	function __destruct() {
+		$this->close();
 	}
 	 
     function connect(){        
@@ -46,7 +55,9 @@ class nut_client {
     }
 
 	function close(){
-       socket_close($this->socket);  
+	   if ($this->socket != NULL){
+         socket_close($this->socket);
+	   }
     }
 	
 	function write($in){
@@ -284,6 +295,60 @@ class nut_client {
 			}
 		}
 		return $arr;
+	}	
+	
+	function setvar($vname, $value){
+		$this->write( "SET VAR ".$this->upsname.' '.$vname.' "'.$value.'"'."\n");
+		
+		$msg = $this->getline();
+		if (!$msg) return false;
+		
+		return true;		
+	}
+	
+	function master(){
+		$this->write( "MASTER ".$this->upsname."\n");
+		
+		$msg = $this->getline();
+		if (!$msg) return false;
+		
+		return true;		
+	}
+	
+	function fsd(){
+		$this->write( "FSD ".$this->upsname."\n");
+		
+		$msg = $this->getline();
+		if (!$msg) return false;
+		
+		return true;		
+	}	
+	
+	function starttls(){
+		$this->write( "STARTTLS ".$this->upsname."\n");
+		
+		$msg = $this->getline();
+		if (!$msg) return false;
+		
+		return true;		
+	}		
+	
+	function ver(){
+		$this->write( "VER ".$this->upsname."\n");
+		
+		$msg = $this->getline();
+		if (!$msg) return false;
+		
+		return $msg;			
+	}
+	
+	function netver(){
+		$this->write( "NETVER ".$this->upsname."\n");
+		
+		$msg = $this->getline();
+		if (!$msg) return false;
+		
+		return $msg;			
 	}	
 	
 	function instcmd($cmdname){
