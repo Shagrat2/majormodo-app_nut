@@ -95,6 +95,8 @@
 		  SQLUpdate($table_name, $rec); // update
 		} else {
 		  $new_rec=1;		
+		  $rec['CHECK_LATEST'] = date('Y-m-d H:i:s');
+		  $rec['CHECK_NEXT'] = date('Y-m-d H:i:s');
 		  $rec['ID'] = SQLInsert($table_name, $rec);
 		  
 		  // Params
