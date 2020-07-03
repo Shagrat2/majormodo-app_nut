@@ -245,6 +245,7 @@ function checkUPS() {
 	  $change = false;
 	  
 	  $params = $nut->listvar();
+	  $nut->close();
 	  if ($params){
 		  foreach ($params as $pname => $pval){
 			$prec=SQLSelectOne("SELECT * FROM app_nut_params WHERE DEVICEID='".$ups['ID']."' AND TITLE='".DBSafe($pname)."'"); 
